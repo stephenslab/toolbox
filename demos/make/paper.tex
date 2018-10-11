@@ -1,7 +1,6 @@
 \documentclass[twoside]{article} 
 \usepackage{times}
-\usepackage{amsmath,amssymb,amsfonts,verbatim,bm,graphicx}
-\usepackage{enumerate,epstopdf,lscape,enumitem}
+\usepackage{amsmath,amssymb,amsfonts,bm}
 \usepackage[abbrvbib]{jmlr2e}
 
 \begin{document}
@@ -45,13 +44,8 @@ problems. These applications include smoothing of Poisson data and
 heteroskedastic Gaussian data. We show through empirical comparisons
 that the results are competitive with other methods, including both
 simple thresholding rules and purpose-built Empirical Bayes
-procedures. Our methods are implemented in the R package {\tt smashr},
-``SMoothing by Adaptive SHrinkage in R,'' available at
-\url{https://www.github.com/stephenslab/smashr}.
+procedures.
 \end{abstract}
-
-{\bf Keywords:} Empirical Bayes, wavelets, non-parametric regression,
-mean estimation, variance estimation
 
 \section{Introduction}
 
@@ -59,37 +53,30 @@ Shrinkage and sparsity play a key role in many areas of modern
 statistics, including high-dimensional regression
 \citep{Tibshirani1996Regression}, covariance or precision matrix
 estimation \citep{Bickel2008Covariance}, multiple testing
-\citep{Efron2004} and signal denoising \citep{Donoho1994Ideal,
-  donoho95}. One attractive way to achieve shrinkage and sparsity is
-via Bayesian or Empirical Bayes (EB) methods
-\citep[e.g.,][]{Efron2002Empirical, Johnstone2004Needles,
-  Johnstone2005Empirical, Clyde2000Flexible,
-  Daniels2001Shrinkage}. These methods are attractive because they can
-adapt the amount of shrinkage to the available data. Specifically, by
-learning from the data the distribution of the underlying ``effects''
-that are being estimated, EB methods can appropriately adapt the
-amount of shrinkage from data set to data set, and indeed from data
-point to data point. For example, in settings where the effects are
-sparse, but with a long tail of large effects, optimal accuracy is
-achieved by strongly shrinking observations that lie near zero while
-minimally shrinking the strongest signals \citep{polson2010shrink}.
-This form of shrinkage can be achieved by appropriate EB methods.
+\citep{Efron2004} and signal denoising \citep{Donoho1994Ideal}. One
+attractive way to achieve shrinkage and sparsity is via Bayesian or
+Empirical Bayes (EB) methods
+\citep[e.g.,][]{Efron2002Empirical}. These methods are attractive
+because they can adapt the amount of shrinkage to the available
+data. Specifically, by learning from the data the distribution of the
+underlying ``effects'' that are being estimated, EB methods can
+appropriately adapt the amount of shrinkage from data set to data set,
+and indeed from data point to data point. For example, in settings
+where the effects are sparse, but with a long tail of large effects,
+optimal accuracy is achieved by strongly shrinking observations that
+lie near zero while minimally shrinking the strongest signals. This
+form of shrinkage can be achieved by appropriate EB methods.
 
 One area where Bayesian methods for shrinkage have been found to be
-particularly effective is in signal denoising
-\citep{abramovich1998wavelet, Clyde2000Flexible,
-  Johnstone2005Empirical}. Shrinkage plays a key role in signal
-denoising, because signal denoising can be accurately and conveniently
-achieved by shrinkage in a transformed (e.g., wavelet) domain
-\citep{Donoho1994Ideal}. In empirical comparisons
-\citep[e.g.,][]{Antoniadis2001Wavelet, Besbeas2004Comparative},
+particularly effective is in signal denoising. Shrinkage plays a key
+role in signal denoising, because signal denoising can be accurately
+and conveniently achieved by shrinkage in a transformed (e.g.,
+wavelet) domain \citep{Donoho1994Ideal}. In empirical comparisons,
 Bayesian methods often outperform alternatives such as simple
-thresholding rules \citep{Coifman1995Translationinvariant,
-  Donoho1994Ideal}. However, existing software implementations of
+thresholding rules. However, existing software implementations of
 Bayesian and EB methods for this problem are limited; for example, the
 {\tt EbayesThresh} package \citep{johnstone2005ebayesthresh} only
-provides methods for estimating Gaussian means with constant
-variance.
+provides methods for estimating Gaussian means with constant variance.
 
 \bibliography{paper}
 
