@@ -1,5 +1,9 @@
 # A illustration of a .bashrc file for configuring your shell
 # environment, similar to the .bashrc file I use on my MacBook Pro.
+#
+# To try this configuration file, run
+#
+#   bash --rcfile .bashrc_macos
 
 # Set the default file permissions.
 umask 77
@@ -9,9 +13,6 @@ alias rm='rm -i'
 alias mv='mv -i'
 alias cp='cp -i'
 alias R='R --no-save'
-
-# Git completion.
-source ~/git-completion.bash
 
 # Set editor.
 export EDITOR=/usr/bin/emacs
@@ -35,9 +36,11 @@ export PATH=/Users/pcarbo/bin:$PATH
 # Intel OMP in R.
 export KMP_DUPLICATE_LIB_OK=TRUE
 
-# This is an alternative, very simple prompt.
-export PS1="\\$ \[$(tput sgr0)\]"
-
 # Set the prompt. 
-# source ~/.bash_prompt
+source ~/.bash_prompt
 
+# This is a very simple prompt that is an alternative to the one
+# defined in .bash_prompt.
+#
+#   export PS1="\\$ \[$(tput sgr0)\]"
+#
