@@ -1,0 +1,96 @@
+\documentclass[twoside]{article} 
+\usepackage{times}
+\usepackage{amsmath,amssymb,amsfonts,verbatim,bm,graphicx}
+\usepackage{enumerate,epstopdf,lscape,enumitem}
+\usepackage[abbrvbib]{jmlr2e}
+
+\begin{document}
+
+\title{\textbf{Flexible Signal Denoising via Flexible Empirical Bayes
+    Shrinkage}}
+
+\author{\name Zhengrong Xing \email zhengrong@galton.uchicago.edu\\ 
+\addr Department of Statistics \\
+University of Chicago \\
+Chicago, IL 60637, USA \\
+\AND 
+\name Matthew Stephens \email mstephens@uchicago.edu \\ 
+\addr Department of Statistics and Department of Human Genetics \\
+University of Chicago \\
+Chicago, IL 60637, USA}
+\editor{To be determined}
+\date{}
+\maketitle
+
+\ShortHeadings{Flexible Denoising via Empirical Bayes Shrinkage}{Xing and
+  Stephens}
+
+\begin{abstract}
+Signal denoising---also known as non-parametric regression---is often
+performed through shrinkage estimation in a transformed (e.g.,
+wavelet) domain; shrinkage in the transformed domain corresponds to
+smoothing in the original domain. A key question in such applications
+is how much to shrink, or, equivalently, how much to smooth. Empirical
+Bayes shrinkage methods provide an attractive solution to this
+problem; they use the data to estimate a distribution of underlying
+``effects'', hence automatically select an appropriate amount of
+shrinkage. However, most existing implementations of Empirical Bayes
+shrinkage are less flexible than they could be---both in their
+assumptions on the underlying distribution of effects, and in their
+ability to handle heterskedasticity---which limits their signal
+denoising applications. Here we address this by taking a particularly
+flexible, stable and computationally convenient Empirical Bayes
+shrinkage method, and we apply it to several signal denoising
+problems. These applications include smoothing of Poisson data and
+heteroskedastic Gaussian data. We show through empirical comparisons
+that the results are competitive with other methods, including both
+simple thresholding rules and purpose-built Empirical Bayes
+procedures. Our methods are implemented in the R package {\tt smashr},
+``SMoothing by Adaptive SHrinkage in R,'' available at
+\url{https://www.github.com/stephenslab/smashr}.
+\end{abstract}
+
+{\bf Keywords:} Empirical Bayes, wavelets, non-parametric regression,
+mean estimation, variance estimation
+
+\section{Introduction}
+
+Shrinkage and sparsity play a key role in many areas of modern
+statistics, including high-dimensional regression
+\citep{Tibshirani1996Regression}, covariance or precision matrix
+estimation \citep{Bickel2008Covariance}, multiple testing
+\citep{Efron2004} and signal denoising \citep{Donoho1994Ideal,
+  donoho95}. One attractive way to achieve shrinkage and sparsity is
+via Bayesian or Empirical Bayes (EB) methods
+\citep[e.g.,][]{Efron2002Empirical, Johnstone2004Needles,
+  Johnstone2005Empirical, Clyde2000Flexible,
+  Daniels2001Shrinkage}. These methods are attractive because they can
+adapt the amount of shrinkage to the available data. Specifically, by
+learning from the data the distribution of the underlying ``effects''
+that are being estimated, EB methods can appropriately adapt the
+amount of shrinkage from data set to data set, and indeed from data
+point to data point. For example, in settings where the effects are
+sparse, but with a long tail of large effects, optimal accuracy is
+achieved by strongly shrinking observations that lie near zero while
+minimally shrinking the strongest signals \citep{polson2010shrink}.
+This form of shrinkage can be achieved by appropriate EB methods.
+
+One area where Bayesian methods for shrinkage have been found to be
+particularly effective is in signal denoising
+\citep{abramovich1998wavelet, Clyde2000Flexible,
+  Johnstone2005Empirical}. Shrinkage plays a key role in signal
+denoising, because signal denoising can be accurately and conveniently
+achieved by shrinkage in a transformed (e.g., wavelet) domain
+\citep{Donoho1994Ideal}. In empirical comparisons
+\citep[e.g.,][]{Antoniadis2001Wavelet, Besbeas2004Comparative},
+Bayesian methods often outperform alternatives such as simple
+thresholding rules \citep{Coifman1995Translationinvariant,
+  Donoho1994Ideal}. However, existing software implementations of
+Bayesian and EB methods for this problem are limited; for example, the
+{\tt EbayesThresh} package \citep{johnstone2005ebayesthresh} only
+provides methods for estimating Gaussian means with constant
+variance.
+
+\bibliography{paper}
+
+\end{document}
