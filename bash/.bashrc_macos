@@ -5,6 +5,11 @@
 #
 #   bash --rcfile .bashrc_macos
 
+# Source global definitions.
+if [ -f /etc/bashrc ]; then
+  . /etc/bashrc
+fi
+
 # Set the default file permissions.
 umask 77
 
