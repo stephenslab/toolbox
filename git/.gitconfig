@@ -1,0 +1,9 @@
+[user]
+	name = Peter Carbonetto
+	email = peter.carbonetto@gmail.com
+[core]
+	editor = emacs --no-init-file
+[push]
+	default = simple
+[color]
+	ui = auto
