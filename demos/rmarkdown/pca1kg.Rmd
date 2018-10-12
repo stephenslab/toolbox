@@ -1,0 +1,43 @@
+---
+title: "Principal components analysis of 1000 Genomes data"
+author: "Peter Carbonetto"
+output:
+  html_document:
+    theme: readable
+    include:
+      before_body: header.html
+      after_body: footer.html
+---
+
+This is a small examlpe to illustrate how principal components analysis
+(PCA) can be applied to genotype data---specifically, genotype data
+from the [1000 Genomes Project][1kg]---to gain insight into population
+structure. Here the data preparation steps are skipped.
+
+```{r knitr-opts, include=FALSE}
+knitr::opts_chunk$set(comment   = "#",
+                      collapse  = TRUE,
+                      fig.align = "center")
+```
+
+## Set up environment
+
+Load the [ggplot2][ggplot2], [cowplot][cowplot] and [rsvd][rsvd]
+packages. The rsvd package is used to compute the principal components
+from the genotype data. For repeatable results, we initialize the
+sequence of pseudorandom numbers beacuse the "rpca" function is based
+on a randomized algorithm for the singular value decomposition (SVD).
+
+```{r setup, message=FALSE}
+library(rsvd)
+library(ggplot2)
+library(cowplot)
+set.seed(1)
+```
+
+# Session info
+
+[1kg]: https://doi.org/10.1038/nature15393
+[ggplot2]: https://cran.r-project.org/package=ggplot2
+[cowplot]: https://cran.r-project.org/package=cowplot
+[rsvd]: https://cran.r-project.org/package=rsvd
