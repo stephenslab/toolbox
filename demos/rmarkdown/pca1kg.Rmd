@@ -9,10 +9,11 @@ output:
       after_body: footer.html
 ---
 
-This is a small examlpe to illustrate how principal components analysis
-(PCA) can be applied to genotype data---specifically, genotype data
-from the [1000 Genomes Project][1kg]---to gain insight into population
-structure. Here the data preparation steps are skipped.
+This is a small examlpe to illustrate how principal components
+analysis (PCA) can be applied to genotype data---specifically,
+genotype data from the [1000 Genomes Project][1kg]---to gain insight
+into population structure. Here, the steps to prepare the genotype
+data for PCA have already already been taken.
 
 ```{r knitr-opts, include=FALSE}
 knitr::opts_chunk$set(comment   = "#",
